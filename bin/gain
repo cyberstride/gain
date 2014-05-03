@@ -4,7 +4,7 @@ var program = require('commander'),
     gain    = require('../');
 
 program
-  .version('0.0.1')
+  .version('0.0.2')
   .option('-t, --traverse <path>', 'Path to traverse the source code.')
   .option('-m, --module <path>', 'Path to look for package.json.  Is the same as traverse path if traverse path is not provided.')
   .option('-d, --development', 'Add bbq sauce')
