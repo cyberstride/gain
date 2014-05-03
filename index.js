@@ -6,13 +6,12 @@ var path = require('path'),
     async = require('async'),
     _    = require('lodash');
 
-var defaults = {
-    modulePath : './',
-    traversePath : './',
-    includeDev : false
-}
-
 module.exports = function(options, callback){
+    var defaults = {
+        modulePath : process.cwd(),
+        traversePath : process.cwd(),
+        includeDev : false
+    }
     if(typeof(options) === 'function'){
         callback = options;
         options = defaults;
@@ -26,7 +25,7 @@ module.exports = function(options, callback){
 
     var pkgPath = path.join(options.modulePath,'package.json');
     if(pkgPath === 'package.json')
-        pkgPath = './package.json';
+        pkgPath = path.join(process.cwd(), './package.json');
 
     var pkg = require(pkgPath);
 
