@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+var program = require('commander'),
+    gain    = require('../');
+
+program
+  .version('0.0.1')
+  .option('-t, --traverse <path>', 'Path to traverse the source code.')
+  .option('-m, --module <path>', 'Path to look for package.json.  Is the same as traverse path if traverse path is not provided.')
+  .option('-d, --development', 'Add bbq sauce')
+  .parse(process.argv);
+
+var options = {};
+if(program.traverse)
+    options.traversePath = program.traverse;
+if(program.module)
+    options.modulePath = program.module;
+if(program.development)
+    options.includeDev = program.development;
+
+gain(options, function(err, results){
+    if(err) return console.error(err);
+
+    console.log(results);
+});
