@@ -1,6 +1,6 @@
 {
   "name": "gain",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple library for checking to see if you have declared dependencies that you're not using in a Node.js project",
   "main": "index.js",
   "bin": "./bin/gain",
