@@ -25,7 +25,7 @@ module.exports = function(options, callback){
 
     var pkgPath = path.join(options.modulePath,'package.json');
     if(pkgPath === 'package.json')
-        pkgPath = path.join(process.cwd(), './package.json');
+        pkgPath = path.join(process.cwd(), 'package.json');
 
     var pkg = require(pkgPath);
 
@@ -34,7 +34,7 @@ module.exports = function(options, callback){
         dependencies = _.merge(dependencies,pkg.devDependencies);
     }
 
-    walk('./', function(err, files){ 
+    walk(options.traversePath, function(err, files){ 
         async.map(files, requires, function(err, results){ 
             results = _.uniq(_.flatten(results));
             var excessDependencies = _.difference(dependencies, results);
